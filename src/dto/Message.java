@@ -1,8 +1,13 @@
 package dto;
 
+import com.sun.org.apache.xpath.internal.operations.Bool;
+
 public class Message {
     String messageText;
+    String carNumber;
     short currentMenu;
+    Short currentFuel;
+    Boolean isOrder;
     public static final String DELIMITER = "asdasdqwer";
 
     public Message(String messageText, short currentMenu) {
@@ -29,4 +34,27 @@ public class Message {
         this.currentMenu = currentMenu;
     }
 
+    public Short getCurrentFuel() {
+        return currentFuel;
+    }
+
+    public void setCurrentFuel(Short currentFuel) {
+        this.currentFuel = currentFuel;
+    }
+
+    public String getCarNumber() {
+        return carNumber;
+    }
+
+    public void setCarNumber(String carNumber) {
+        this.carNumber = carNumber;
+    }
+
+    public Boolean isOrder() {
+        return isOrder;
+    }
+
+    public void setOrder(Boolean order) {
+        isOrder = order;
+    }
 }

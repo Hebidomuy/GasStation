@@ -18,33 +18,29 @@ public class Client {
     }
 
     public void runClient() throws IOException {
-        Socket clientSocket = new Socket("localhost", 80);
+        Socket clientSocket = new Socket("localhost", 90);
         Scanner userConsoleScanner = new Scanner(System.in);
         Scanner inFromServer = new Scanner(clientSocket.getInputStream());
         DataOutputStream outToServer = new DataOutputStream(clientSocket.getOutputStream());
-        Message messageToServer = new Message();
-        Message messageFromServer;
+        Message message;
         String request, response;
-
 
         while (true) {
             response = inFromServer.nextLine();
-            messageFromServer = JsonUtil.fromJson(response);
-            messageToServer.setCurrentMenu(messageFromServer.getCurrentMenu());
-            System.out.println("Server's response: " + messageFromServer.getMessageText().replace(Message.DELIMITER, "\n"));
+            message = JsonUtil.fromJson(response);
+            System.out.println("Server's response: " + message.getMessageText().replace(Message.DELIMITER, "\n"));
 
             System.out.print("Input message: ");
             request = userConsoleScanner.next();
             if (request.equals("exit")) {
-                messageToServer.setMessageText("exit");
-                outToServer.writeBytes(JsonUtil.toJson(messageToServer) + "\n");
+                message.setMessageText("exit");
+                outToServer.writeBytes(JsonUtil.toJson(message) + "\n");
                 break;
             }
 
-            messageToServer.setMessageText(request);
-            outToServer.writeBytes(JsonUtil.toJson(messageToServer) + "\n");
+            message.setMessageText(request);
+            outToServer.writeBytes(JsonUtil.toJson(message) + "\n");
 
-            messageToServer = new Message();
         }
         clientSocket.close();
     }
