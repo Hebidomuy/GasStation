@@ -4,6 +4,7 @@ import com.sun.org.apache.xpath.internal.operations.Bool;
 
 public class Message {
     String messageText;
+    String clientName;
     String carNumber;
     short currentMenu;
     Short currentFuel;
@@ -40,6 +41,14 @@ public class Message {
 
     public void setCurrentFuel(Short currentFuel) {
         this.currentFuel = currentFuel;
+    }
+
+    public String getClientName() {
+        return clientName;
+    }
+
+    public void setClientName(String clientName) {
+        this.clientName = clientName;
     }
 
     public String getCarNumber() {

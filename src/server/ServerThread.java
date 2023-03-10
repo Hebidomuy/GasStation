@@ -30,7 +30,26 @@ public class ServerThread implements Runnable {
             DataOutputStream outToClient = new DataOutputStream(socket.getOutputStream());
             Message messageToUser = new Message();
             Message messageFromClient = new Message();
-            String response, request;
+            String request;
+            Boolean validClientName = false;
+            messageToUser.setMessageText("Write your name ");
+            outToClient.writeBytes(JsonUtil.toJson(messageToUser) + "\n");
+            while (!validClientName) {
+                messageFromClient = JsonUtil.fromJson(inFromClient.nextLine());
+                String text = messageFromClient.getMessageText();
+
+              if (text != null && !text.trim().isEmpty()){
+                    System.out.println(text);
+                  validClientName = true;
+                }
+
+                if (!validClientName) {
+                    messageToUser.setMessageText("Invalid name, try again ");
+                    outToClient.writeBytes(JsonUtil.toJson(messageToUser) + "\n");
+                } else {
+                    messageToUser.setClientName(messageFromClient.getMessageText().trim());
+                }
+            }
             Boolean validCarNumber = false;
             messageToUser.setMessageText("Write your car number ");
             outToClient.writeBytes(JsonUtil.toJson(messageToUser) + "\n");
@@ -38,7 +57,7 @@ public class ServerThread implements Runnable {
             while (!validCarNumber) {
                 messageFromClient = JsonUtil.fromJson(inFromClient.nextLine());
                 String text = messageFromClient.getMessageText();
-                Pattern pattern = Pattern.compile("[A-Z]{2}[0-9]{4}[A-Z]{2}");
+                Pattern pattern = Pattern.compile("^[A-Z]{2}[0-9]{4}[A-Z]{2}$");
                 Matcher matcher = pattern.matcher(text);
                 while (matcher.find()) {
                     System.out.println(text.substring(matcher.start(), matcher.end()));
@@ -48,10 +67,11 @@ public class ServerThread implements Runnable {
                 if (!validCarNumber) {
                     messageToUser.setMessageText("Invalid car number, try again ");
                     outToClient.writeBytes(JsonUtil.toJson(messageToUser) + "\n");
+                } else {
+                    messageToUser.setCarNumber(messageFromClient.getMessageText());
                 }
             }
             messageToUser.setCurrentMenu((short) 1);
-            messageToUser.setCarNumber(messageFromClient.getMessageText());
             messageToUser.setMessageText(getFirstMenu(gasStation));
             outToClient.writeBytes(JsonUtil.toJson(messageToUser) + "\n");
 
@@ -110,8 +130,9 @@ public class ServerThread implements Runnable {
                         if (messageFromClient.isOrder()) {
                             int checkNumber = gasStation.orderFuel(
                                     messageFromClient.getCurrentFuel(),
+                                    messageFromClient.getClientName(),
                                     messageFromClient.getCarNumber(),
-                                 BigDecimal.valueOf(Double.parseDouble(messageFromClient.getMessageText()))
+                                    BigDecimal.valueOf(Double.parseDouble(messageFromClient.getMessageText()))
                             );
                             if (checkNumber > 0) {
                                 messageToUser.setCurrentMenu((short) 1);
@@ -134,6 +155,7 @@ public class ServerThread implements Runnable {
                         } else {
                             int checkNumber = gasStation.bookFuel(
                                     messageFromClient.getCurrentFuel(),
+                                    messageFromClient.getClientName(),
                                     messageFromClient.getCarNumber(),
                                     BigDecimal.valueOf(Double.parseDouble(messageFromClient.getMessageText()))
                             );
@@ -172,6 +194,7 @@ public class ServerThread implements Runnable {
                                     clientCheck.getStringForPrintToConsole(Message.DELIMITER) +
                                     "Thank you for order  " + Message.DELIMITER +
                                     getFirstMenu(gasStation));
+
                             clientCheck.setClose(true);
                         } else if (messageFromClient.getMessageText().equals("0")) {
                             messageToUser.setCurrentMenu((short) 1);
@@ -229,6 +252,7 @@ public class ServerThread implements Runnable {
 
     public Message getFourthMenu(GasStation gasStation, Message message) {
         Check clientCheck = gasStation.getCheckByCarNumber(message.getCarNumber());
+        gasStation.getCheckByClientName(message.getClientName());
         if (clientCheck == null) {
 
             message.setCurrentMenu((short) 1);
@@ -321,15 +345,15 @@ public class ServerThread implements Runnable {
         return invalidInput;
     }
 
-   private String getCurrentDouble(String input) {
-       if (input.contains(".")) {
-           if (input.substring(input.indexOf(".")).length() > 3) {
-               return input.substring(0, input.indexOf(".") + 3);
-           } else {
-               return input;
-           }
-       } else {
-           return input;
-       }
-   }
+    private String getCurrentDouble(String input) {
+        if (input.contains(".")) {
+            if (input.substring(input.indexOf(".")).length() > 3) {
+                return input.substring(0, input.indexOf(".") + 3);
+            } else {
+                return input;
+            }
+        } else {
+            return input;
+        }
+    }
 }

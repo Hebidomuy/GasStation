@@ -41,6 +41,15 @@ public class GasStation {
         return null;
     }
 
+    public Check getCheckByClientName(String clientName) {
+        for (Check item : this.getCheckList()) {
+            if (item.getClientName().equals(clientName) && !item.getClose()) {
+                return item;
+            }
+        }
+        return null;
+    }
+
     public Check getCheckByCarNumber(String carNumber) {
         for (Check item : this.getCheckList()) {
             if (item.getCarNumber().equals(carNumber) && !item.getClose()) {
@@ -60,13 +69,13 @@ public class GasStation {
         return result;
     }
 
-    public int orderFuel(Short currentFuel, String carNumber, BigDecimal clientOrder) {
+    public int orderFuel(Short currentFuel, String clientName, String carNumber, BigDecimal clientOrder) {
         int result = -1;
         Fuel fuel = getFuelFromGasStation(currentFuel);
 
         if (fuel.getLitersAvailable().compareTo(clientOrder) >= 0) {
             List<Check> tempList = this.getCheckList();
-            Check check = new Check(carNumber, fuel, clientOrder, true);
+            Check check = new Check(clientName, carNumber, fuel, clientOrder, true);
             tempList.add(check);
             this.setCheckList(tempList);
             result = check.getNumber();
@@ -75,7 +84,7 @@ public class GasStation {
         return result;
     }
 
-    public int bookFuel(Short currentFuel, String carNumber, BigDecimal clientOrder) {
+    public int bookFuel(Short currentFuel, String clientName, String carNumber, BigDecimal clientOrder) {
         int result = -1;
         Fuel fuel = getFuelFromGasStation(currentFuel);
 
@@ -83,13 +92,16 @@ public class GasStation {
             List<Check> tempList = this.getCheckList();
             Check clientCheck = null;
             for (Check item : tempList) {
+                if (item.getClientName().equals(clientName) && !item.getClose()) {
+                    clientCheck = item;
+                }
                 if (item.getCarNumber().equals(carNumber) && !item.getClose()) {
                     clientCheck = item;
                 }
             }
 
             if (clientCheck == null) {
-                clientCheck = new Check(carNumber, fuel, clientOrder, false);
+                clientCheck = new Check(clientName, carNumber, fuel, clientOrder, false);
                 tempList.add(clientCheck);
                 this.setCheckList(tempList);
                 result = clientCheck.getNumber();

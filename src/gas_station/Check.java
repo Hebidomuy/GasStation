@@ -9,19 +9,23 @@ import java.util.Random;
 
 public class Check {
     private int number;
+    private String clientName;
     private String carNumber;
+
     private Boolean isClose;
     private List<CheckItem> checkItems = new ArrayList<>();
 
 
-    public Check(String carNumber, List<CheckItem> checkItems) {
+    public Check(String clientName, String carNumber, List<CheckItem> checkItems) {
         this.number = RandomInt.getRandomNumberUsingNextInt(1, 100000);
+        this.clientName = clientName;
         this.carNumber = carNumber;
         this.checkItems = checkItems;
     }
 
-    public Check(String carNumber, Fuel fuel, BigDecimal clientOrder, boolean isClose) {
+    public Check(String clientName, String carNumber, Fuel fuel, BigDecimal clientOrder, boolean isClose) {
         this.number = RandomInt.getRandomNumberUsingNextInt(1, 100000);
+        this.clientName = clientName;
         this.carNumber = carNumber;
         List<CheckItem> tempCheckItemList = new ArrayList<>();
         tempCheckItemList.add(new CheckItem(fuel, clientOrder));
@@ -34,8 +38,9 @@ public class Check {
         StringBuilder stringBuilder = new StringBuilder();
         stringBuilder
                 .append("================================").append(delimiter)
-                .append("  Check № : " + this.getNumber()).append(delimiter)
-                .append("  Car number: " + this.getCarNumber()).append(delimiter).append(delimiter);
+                .append("        Check № : " + this.getNumber()).append(delimiter).append(delimiter)
+                .append("Client name: " + this.getClientName()).append(delimiter).append(delimiter)
+                .append("Car number: " + this.getCarNumber()).append(delimiter).append(delimiter);
         for (CheckItem item : this.getCheckItems()) {
             stringBuilder
                     .append(item.getFuel().getName())
@@ -52,7 +57,7 @@ public class Check {
                 .append("TOTAL PRICE: ").append(totalPrice.setScale(2)).append(" UAH")
                 .append(delimiter)
                 .append("================================")
-        .append(delimiter);
+                .append(delimiter);
         return stringBuilder.toString();
     }
 
@@ -66,6 +71,14 @@ public class Check {
 
     public void setClose(Boolean close) {
         isClose = close;
+    }
+
+    public String getClientName() {
+        return clientName;
+    }
+
+    public void setClientName(String clientName) {
+        this.clientName = clientName;
     }
 
     public String getCarNumber() {

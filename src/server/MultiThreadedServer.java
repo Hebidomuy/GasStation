@@ -9,7 +9,7 @@ import java.net.Socket;
 public class MultiThreadedServer {
 
     public static void start(GasStation gasStation) throws IOException {
-        ServerSocket serverSocket = new ServerSocket(90);
+        ServerSocket serverSocket = new ServerSocket(9889);
         while (true) {
             Socket socket = serverSocket.accept();
             Thread t = new Thread(new ServerThread(socket, gasStation));

@@ -18,7 +18,7 @@ public class Client {
     }
 
     public void runClient() throws IOException {
-        Socket clientSocket = new Socket("localhost", 90);
+        Socket clientSocket = new Socket(this.serverUrl, this.port);
         Scanner userConsoleScanner = new Scanner(System.in);
         Scanner inFromServer = new Scanner(clientSocket.getInputStream());
         DataOutputStream outToServer = new DataOutputStream(clientSocket.getOutputStream());

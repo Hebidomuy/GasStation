@@ -2,33 +2,22 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="68b9e785-4fb8-4d42-94ac-0c6efa362a9d" name="Default Changelist" comment="finalization of the project">
-      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/out/production/GasStation/META-INF/GasStation.kotlin_module" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/out/production/GasStation/gas_station/Check.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/out/production/GasStation/gas_station/CheckItem.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/out/production/GasStation/utils/RandomInt.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/gas_station/Check.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/gas_station/CheckItem.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/utils/RandomInt.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/GasStation/ClientMain.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/GasStation/ClientMain.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/GasStation/GasStationMain.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/GasStation/GasStationMain.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/GasStation/META-INF/GasStation.kotlin_module" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/GasStation/client/Client.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/GasStation/client/Client.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/GasStation/dto/Message.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/GasStation/dto/Message.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/GasStation/gas_station/Basket.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/GasStation/gas_station/Fuel.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/GasStation/gas_station/Fuel.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/GasStation/gas_station/Check.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/GasStation/gas_station/Check.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/GasStation/gas_station/GasStation.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/GasStation/gas_station/GasStation.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/GasStation/gas_station/Сheck.class" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/GasStation/server/MultiThreadedServer.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/GasStation/server/MultiThreadedServer.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/GasStation/server/ServerThread.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/GasStation/server/ServerThread.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/ClientMain.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ClientMain.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/GasStationMain.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/GasStationMain.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/client/Client.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/client/Client.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/dto/Message.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/dto/Message.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/gas_station/Basket.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/gas_station/Fuel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/gas_station/Fuel.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/gas_station/Check.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/gas_station/Check.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/gas_station/GasStation.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/gas_station/GasStation.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/gas_station/Сheck.java" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/server/MultiThreadedServer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/server/MultiThreadedServer.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/server/ServerThread.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/server/ServerThread.java" afterDir="false" />
     </list>
@@ -57,7 +46,7 @@
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../brain-acad-lab-2" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="project.structure.last.edited" value="Modules" />
     <property name="project.structure.proportion" value="0.15" />
     <property name="project.structure.side.proportion" value="0.2" />
@@ -129,8 +118,18 @@
       <workItem from="1677823431045" duration="21932000" />
       <workItem from="1678082837640" duration="11446000" />
       <workItem from="1678168792124" duration="7752000" />
-      <workItem from="1678255373274" duration="629000" />
+      <workItem from="1678255373274" duration="9527000" />
+      <workItem from="1678341919591" duration="3474000" />
+      <workItem from="1678428293442" duration="11767000" />
     </task>
+    <task id="LOCAL-00001" summary="finalization of the project">
+      <created>1678257215950</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1678257215950</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -150,6 +149,7 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <option name="LAST_COMMIT_MESSAGE" value="" />
+    <MESSAGE value="finalization of the project" />
+    <option name="LAST_COMMIT_MESSAGE" value="finalization of the project" />
   </component>
 </project>
